@@ -1,0 +1,19 @@
+#!/bin/sh
+
+SO=`uname -s`
+SCRIPT='acservice'
+INIT_DIR=/etc/init.d
+
+if [ "X$SO" = "XLinux" ]; then
+  if [ ! -d /dev/net ]; then
+    mkdir /dev/net
+  fi
+  if [ ! -e /dev/net/tun ]; then
+    mknod /dev/net/tun c 10 200
+    chmod 0700 /dev/net/tun
+  fi
+  ${INIT_DIR}/${SCRIPT} start
+else
+  echo "O servico nao foi iniciado"
+  exit 1
+fi

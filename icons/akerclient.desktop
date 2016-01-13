@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Aker Client
+Exec=/usr/local/AkerClient/akerclient_init.sh
+Terminal=false
+Type=Application
+Icon=akerclient.png
+Categories=Application;Network;

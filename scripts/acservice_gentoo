@@ -1,0 +1,30 @@
+#!/sbin/runscript
+
+CWD=`pwd`
+DPATH=/usr/local/AkerClient/acservice_env
+MPATH=/usr/local/AkerClient/aker_client.ko
+PID_PATH=/var/run/acservice.pid
+KERNEL_SCRIPT=/usr/local/AkerClient/driver/buildkernelmod.sh
+KERNEL_LOG=/usr/local/AkerClient/driver/buildkernelmod.log
+
+depend() {
+  use dns
+  need net localmount
+  after bootmisc
+}
+
+start() {
+  ebegin "Iniciando o servico do Aker Client."
+  $KERNEL_SCRIPT >> $KERNEL_LOG 1>> $KERNEL_LOG 2>> $KERNEL_LOG
+  /sbin/modprobe tun 2>> /dev/null
+  /sbin/insmod $MPATH
+  start-stop-daemon --start --exec $DPATH --pidfile $PID_FILE
+  eend $?
+}
+
+stop() {
+  ebegin "Parando o servico do Aker Client."
+  start-stop-daemon --stop --exec $DPATH --pidfile $PID_FILE
+  eend $?
+}
+

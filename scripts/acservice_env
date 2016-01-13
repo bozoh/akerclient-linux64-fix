@@ -1,0 +1,9 @@
+#!/bin/sh
+
+BPATH=/usr/local/AkerClient
+LPATH=$BPATH/libs
+DPATH=$BPATH/acservice
+
+env LD_LIBRARY_PATH=$LPATH:$LD_LIBRARY_PATH $DPATH &
+
+exit $?
