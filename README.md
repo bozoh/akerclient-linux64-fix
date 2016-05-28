@@ -23,7 +23,7 @@ Change to:
 ```C
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0))
  .owner    = THIS_MODULE,
-#endif`
+#endif
 ```
 
 
