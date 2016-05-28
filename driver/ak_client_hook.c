@@ -106,7 +106,9 @@ static int logon_array_size = 0;
 
 static struct nf_hook_ops ak_client_hook_out = {
   .hook     = ak_client_out_chk,
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0))
   .owner    = THIS_MODULE,
+#endif
   .pf       = PF_INET,
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(2,6,25))
   .hooknum  = NF_IP_LOCAL_OUT,

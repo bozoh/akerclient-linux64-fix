@@ -10,9 +10,29 @@ The patch is in driver/ak_client_drv.c line 107
 
 minor = MINOR(filp->f_dentry->d_inode->i_rdev);
 
-change to:
+Change to:
 
 minor = MINOR(filp->f_path.dentry->d_inode->i_rdev);
+
+In file driver/ak_client_hook.c line 109:
+
+.owner    = THIS_MODULE,
+
+Change to:
+
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(4,4,0))
+  .owner    = THIS_MODULE,
+#endif
+
+
+In file instalar.sh, line 56:
+
+if  [ ${MAJOR} -ne 2 ] && [ ${MAJOR} -ne 3 ]
+
+Change to:
+
+if [ ${MAJOR} -ne 2 ] && [ ${MAJOR} -ne 3 ] && [ ${MAJOR} -ne 4 ]
+
 
 
 

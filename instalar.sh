@@ -53,7 +53,7 @@ then
   exit
 fi
 
-if [ ${MAJOR} -ne 2 ] && [ ${MAJOR} -ne 3 ]
+if [ ${MAJOR} -ne 2 ] && [ ${MAJOR} -ne 3 ] && [ ${MAJOR} -ne 4 ]
 then
   echo
   echo "ERRO: As versoes do kernel suportadas são 2.6.x e 3.x.x ."
