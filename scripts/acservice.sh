@@ -9,7 +9,7 @@
 #
 # processname: acservice
 
-## BEGIN INIT INFO
+### BEGIN INIT INFO
 # Provides:               acservice
 # Required-Start:         $local_fs $network
 # Required-Stop:          $local_fs
